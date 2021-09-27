@@ -1,0 +1,2 @@
+# intercom_notifi_all_change
+Intercomの通知変更ボタンを全部押すクローム拡張
