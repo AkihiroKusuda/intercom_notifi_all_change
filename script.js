@@ -5,7 +5,7 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function all_turn(){
-    let position = [642,643,645,646,648,649,654,655,657,658,660,661]
+    let position = [642,643,645,646,648,649,654,655,657,658,660,661,670]
     let box_ids =[]
     position.forEach((item,index) => {
         box_ids.push('ember'.concat([item]))
@@ -14,5 +14,4 @@ function all_turn(){
         let element = document.getElementById(item)
         element.click()
     })
-    document.getElementById('ember670').click();
 }
