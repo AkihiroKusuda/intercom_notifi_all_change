@@ -1,0 +1,2 @@
+# intercom_js
+Intercomの通知変更ボタンを全部押すクローム拡張
