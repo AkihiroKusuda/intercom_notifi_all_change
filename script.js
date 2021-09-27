@@ -1,4 +1,4 @@
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 	if (request == "Action") {
 		all_turn();
 	}
@@ -10,7 +10,7 @@ function all_turn(){
     position.forEach((item,index) => {
         box_ids.push('ember'.concat([item]))
     })
-    box_ids.forEach(function(item,index){
+    box_ids.forEach((item,index) => {
         let element = document.getElementById(item)
         element.click()
     })
