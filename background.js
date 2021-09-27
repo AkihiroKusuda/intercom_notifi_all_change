@@ -17,7 +17,7 @@ chrome.browserAction.onClicked.addListener((tab) => {
 			var start_time = new Date();
 			while (new Date() - start_time < ms);
 		}
-		sleep(1000);
+		sleep(2000);
 	}
 
 	chrome.tabs.sendMessage(tab.id, "Action");
