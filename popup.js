@@ -10,7 +10,9 @@ btn1.onclick = () => {
 
 btn2.onclick = () => {
     console.log('clicked btn2')
-    chrome.runtime.sendMessage('Change',(recieve) =>{
+    chrome.tabs.query({active : true}).then((tabs)=>{
+        chrome.tabs.sendMessage(tabs[0].id,'Change')
+    }).then((recieve)=>{
         console.log(recieve);
-    })
+    });
 }

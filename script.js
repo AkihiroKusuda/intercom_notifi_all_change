@@ -1,14 +1,13 @@
 console.log("hello");
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-	if (request == "Action") {
+	if (request == 'Change') {
         console.log("recieved Message")
 		all_turn();
         console.log("Done...")
 	}
-    sendResponse();
+    sendResponse({});
     return;
-    console.log(request);
 });
 
 function all_turn(){
