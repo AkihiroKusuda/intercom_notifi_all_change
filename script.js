@@ -1,8 +1,14 @@
-chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
+console.log("hello");
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 	if (request == "Action") {
+        console.log("recieved Message")
 		all_turn();
         console.log("Done...")
 	}
+    sendResponse();
+    return;
+    console.log(request);
 });
 
 function all_turn(){

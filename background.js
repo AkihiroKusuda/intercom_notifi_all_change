@@ -1,24 +1,24 @@
-chrome.browserAction.onClicked.addListener((tab) => {
-	let url_regex = new RegExp('https:\/\/app\.intercom\.com\/a\/apps\/[a-z0-9]+\/account\/notifications');
-
-	// 通知設定ページにいない場合
-	if (!url_regex.test(tab.url)){
-		// 遷移させる
-		chrome.tabs.executeScript({
-			code: `
-			let url = window.location.href;
-			let id = url.split('/')[5];
-			window.location.href = 'https://app.intercom.com/a/apps/' + id + '/account/notifications';
-			`,
+chrome.runtime.onMessage.addListener((request,sender,sendResponse) =>{
+	let intercom_tab_id;
+	if (request == 'All'){
+		chrome.tabs.create({url:'https://app.intercom.com'}).then((tab) => {
+			intercom_tab_id = tab.id;
+		}).then(()=>{
+			window.location.href='https://app.intercom.com/a/apps/mdt4c02a/account/notifications';
+		}).then(()=>{
+			console.log(intercom_tab_id);
+			chrome.tabs.sendMessage(intercom_tab_id, "Action");
+			console.log("send message done");
 		})
-
-		// ページ遷移待ち
-		function sleep(ms) {
-			var start_time = new Date();
-			while (new Date() - start_time < ms);
-		}
-		sleep(2000);
+		sendResponse({});
+		return;
 	}
 
-	chrome.tabs.sendMessage(tab.id, "Action");
+	if (request == 'Change'){
+		await chrome.tabs.sendMessage(intercom_tab_id, "Action");
+		sendResponse({});
+		return;
+	}
+	console.log("trash message");
 });
+
