@@ -3,7 +3,7 @@ let btn2 = document.getElementById('btn2');
 
 btn1.onclick = () => {
     console.log("clicked btn1")
-    chrome.runtime.sendMessage('All',(recieve) =>{
+    chrome.runtime.sendMessage('Start',(recieve) =>{
         console.log(recieve);
     })
 }
